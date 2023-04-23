@@ -32,7 +32,7 @@ export default function Search(){
                     "  
 
                 >
-                    Somewhere
+
                 </div>
 
             </div>
