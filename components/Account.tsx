@@ -3,6 +3,7 @@ import { useUser, useSupabaseClient, Session } from '@supabase/auth-helpers-reac
 import { Database } from '../utils/database.types'
 import Avatar from './Avatar'
 
+
 type Profiles = Database['public']['Tables']['profiles']['Row']
 
 export default function Account({ session }: { session: Session }) {
@@ -78,6 +79,7 @@ export default function Account({ session }: { session: Session }) {
   }
 
   return (
+
     <div className="form-widget">
       
       <div>
