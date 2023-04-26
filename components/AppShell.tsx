@@ -19,79 +19,22 @@ const navigation = [
   { name: 'Explore', href: '/explore', icon: GlobeAltIcon, current: false },
   { name: 'Register', href: '#', icon: CircleStackIcon, current: false },
   { name: 'Heatmapp', href: '#', icon: Squares2X2Icon, current: false },
-  { name: 'Reports', href: '/reports', icon: ChartBarIcon, current: false },
+  { name: 'Reports', href: '#', icon: ChartBarIcon, current: false },
   { name: 'Alerts', href: '#', icon: BellAlertIcon, current: false }
 ]
 
 const userNavigation = [
-  { name: 'Your profile', href: '/profile' },
-  { name: 'Sign out', href: '/auth' },
+  { name: 'Your profile', href: '#' },
+  { name: 'Sign out', href: '#' },
 ]
 
-const stats = [
-  { name: 'Total Subscribers', stat: '71,897', previousStat: '70,946', change: '12%', changeType: 'increase' },
-  { name: 'Avg. Open Rate', stat: '58.16%', previousStat: '56.14%', change: '2.02%', changeType: 'increase' },
-  { name: 'Avg. Click Rate', stat: '24.57%', previousStat: '28.62%', change: '4.05%', changeType: 'decrease' },
-]
 
-const statuses = {
-  Complete: 'text-green-700 bg-green-50 ring-green-600/20',
-  'In progress': 'text-gray-600 bg-gray-50 ring-gray-500/10',
-  Archived: 'text-yellow-800 bg-yellow-50 ring-yellow-600/20',
-}
-const projects = [
-  {
-    id: 1,
-    name: 'GraphQL API',
-    href: '#',
-    status: 'Complete',
-    createdBy: 'Leslie Alexander',
-    dueDate: 'March 17, 2023',
-    dueDateTime: '2023-03-17T00:00Z',
-  },
-  {
-    id: 2,
-    name: 'New benefits plan',
-    href: '#',
-    status: 'In progress',
-    createdBy: 'Leslie Alexander',
-    dueDate: 'May 5, 2023',
-    dueDateTime: '2023-05-05T00:00Z',
-  },
-  {
-    id: 3,
-    name: 'Onboarding emails',
-    href: '#',
-    status: 'In progress',
-    createdBy: 'Courtney Henry',
-    dueDate: 'May 25, 2023',
-    dueDateTime: '2023-05-25T00:00Z',
-  },
-  {
-    id: 4,
-    name: 'iOS app',
-    href: '#',
-    status: 'In progress',
-    createdBy: 'Leonard Krasner',
-    dueDate: 'June 7, 2023',
-    dueDateTime: '2023-06-07T00:00Z',
-  },
-  {
-    id: 5,
-    name: 'Marketing site redesign',
-    href: '#',
-    status: 'Archived',
-    createdBy: 'Courtney Henry',
-    dueDate: 'June 10, 2023',
-    dueDateTime: '2023-06-10T00:00Z',
-  },
-]
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function AppsShell() {
+export default function AppShell() {
   const [sidebarOpen, setSidebarOpen] = useState(false)
 
   return (
@@ -347,141 +290,7 @@ export default function AppsShell() {
         <main className="py-10">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             {/* Canvas Stats Section*/}
-            <div>
-              <h3 className="text-base font-semibold leading-6 text-gray-900">Last 30 days</h3>
-              <dl className="mt-5 grid grid-cols-1 divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow md:grid-cols-3 md:divide-x md:divide-y-0">
-                {stats.map((item) => (
-                  <div key={item.name} className="px-4 py-5 sm:p-6">
-                    <dt className="text-base font-normal text-gray-900">{item.name}</dt>
-                    <dd className="mt-1 flex items-baseline justify-between md:block lg:flex">
-                      <div className="flex items-baseline text-2xl font-semibold text-indigo-600">
-                        {item.stat}
-                        <span className="ml-2 text-sm font-medium text-gray-500">from {item.previousStat}</span>
-                      </div>
-
-                      <div
-                        className={classNames(
-                          item.changeType === 'increase' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800',
-                          'inline-flex items-baseline rounded-full px-2.5 py-0.5 text-sm font-medium md:mt-2 lg:mt-0'
-                        )}
-                      >
-                        {item.changeType === 'increase' ? (
-                          <ArrowUpIcon
-                            className="-ml-1 mr-0.5 h-5 w-5 flex-shrink-0 self-center text-green-500"
-                            aria-hidden="true"
-                          />
-                        ) : (
-                          <ArrowDownIcon
-                            className="-ml-1 mr-0.5 h-5 w-5 flex-shrink-0 self-center text-red-500"
-                            aria-hidden="true"
-                          />
-                        )}
-
-                        <span className="sr-only"> {item.changeType === 'increase' ? 'Increased' : 'Decreased'} by </span>
-                        {item.change}
-                      </div>
-                    </dd>
-                  </div>
-                ))}
-              </dl>
-            </div>
-
-            {/* Recent updates section */}
-            <h3 className="text-base font-semibold leading-6 text-gray-900">Recent Activity</h3>
-
-            <ul role="list" className="divide-y divide-gray-100" >
-              {projects.map((project) => (
-                <li key={project.id} className="flex items-center justify-between gap-x-6 py-5">
-                  <div className="min-w-0">
-                    <div className="flex items-start gap-x-3">
-                      <p className="text-sm font-semibold leading-6 text-gray-900">{project.name}</p>
-                      <p
-                        className={classNames(
-                          statuses[project.status],
-                          'rounded-md whitespace-nowrap mt-0.5 px-1.5 py-0.5 text-xs font-medium ring-1 ring-inset'
-                        )}
-                      >
-                        {project.status}
-                      </p>
-                    </div>
-                    <div className="mt-1 flex items-center gap-x-2 text-xs leading-5 text-gray-500">
-                      <p className="whitespace-nowrap">
-                        Due on <time dateTime={project.dueDateTime}>{project.dueDate}</time>
-                      </p>
-                      <svg viewBox="0 0 2 2" className="h-0.5 w-0.5 fill-current">
-                        <circle cx={1} cy={1} r={1} />
-                      </svg>
-                      <p className="truncate">Created by {project.createdBy}</p>
-                    </div>
-                  </div>
-                  <div className="flex flex-none items-center gap-x-4">
-                    <a
-                      href={project.href}
-                      className="hidden rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:block"
-                    >
-                      View project<span className="sr-only">, {project.name}</span>
-                    </a>
-                    <Menu as="div" className="relative flex-none">
-                      <Menu.Button className="-m-2.5 block p-2.5 text-gray-500 hover:text-gray-900">
-                        <span className="sr-only">Open options</span>
-                        <EllipsisVerticalIcon className="h-5 w-5" aria-hidden="true" />
-                      </Menu.Button>
-                      <Transition
-                        as={Fragment}
-                        enter="transition ease-out duration-100"
-                        enterFrom="transform opacity-0 scale-95"
-                        enterTo="transform opacity-100 scale-100"
-                        leave="transition ease-in duration-75"
-                        leaveFrom="transform opacity-100 scale-100"
-                        leaveTo="transform opacity-0 scale-95"
-                      >
-                        <Menu.Items className="absolute right-0 z-10 mt-2 w-32 origin-top-right rounded-md bg-white py-2 shadow-lg ring-1 ring-gray-900/5 focus:outline-none">
-                          <Menu.Item>
-                            {({ active }) => (
-                              <a
-                                href="#"
-                                className={classNames(
-                                  active ? 'bg-gray-50' : '',
-                                  'block px-3 py-1 text-sm leading-6 text-gray-900'
-                                )}
-                              >
-                                Edit<span className="sr-only">, {project.name}</span>
-                              </a>
-                            )}
-                          </Menu.Item>
-                          <Menu.Item>
-                            {({ active }) => (
-                              <a
-                                href="#"
-                                className={classNames(
-                                  active ? 'bg-gray-50' : '',
-                                  'block px-3 py-1 text-sm leading-6 text-gray-900'
-                                )}
-                              >
-                                Move<span className="sr-only">, {project.name}</span>
-                              </a>
-                            )}
-                          </Menu.Item>
-                          <Menu.Item>
-                            {({ active }) => (
-                              <a
-                                href="#"
-                                className={classNames(
-                                  active ? 'bg-gray-50' : '',
-                                  'block px-3 py-1 text-sm leading-6 text-gray-900'
-                                )}
-                              >
-                                Delete<span className="sr-only">, {project.name}</span>
-                              </a>
-                            )}
-                          </Menu.Item>
-                        </Menu.Items>
-                      </Transition>
-                    </Menu>
-                  </div>
-                </li>
-              ))}
-            </ul>
+                  
 
           </div>
         </main>
